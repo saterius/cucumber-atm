@@ -54,6 +54,14 @@ public class StepDefATM {
         assertThrows(NotEnoughBalanceException.class,
                 () -> atm.withdraw(amount));
     }
+
+    @When("I deposit {double} by from ATM")
+    public void i_deposit_by_from_atm(double amount) {
+        // Write code here that turns the phrase above into concrete actions
+        atm.deposit(amount);
+//        throw new io.cucumber.java.PendingException();
+    }
+
     @Then("my account balance is {float}")
     public void my_account_balance_is(double balance) {
         assertEquals(balance, atm.getBalance());
@@ -67,7 +75,7 @@ public class StepDefATM {
     @Then("customer id {int} account balance is {float}")
     public void customer_id_account_balance_is(int id, double balance) {
         assertEquals(balance,
-                     bank.findCustomer(id).getAccount().getBalance());
+                bank.findCustomer(id).getAccount().getBalance());
     }
 
 }
